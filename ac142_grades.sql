@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2015 at 05:53 AM
+-- Generation Time: Dec 14, 2015 at 06:01 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -47,6 +47,19 @@ CREATE TABLE IF NOT EXISTS `section` (
   `section_name` varchar(11) NOT NULL,
   `status` varchar(11) NOT NULL,
   `student_year` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_year`
+--
+
+CREATE TABLE IF NOT EXISTS `student_year` (
+  `id` int(11) NOT NULL,
+  `school_year` char(9) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -101,6 +114,12 @@ ALTER TABLE `section`
   ADD PRIMARY KEY (`id`), ADD KEY `student_year` (`student_year`);
 
 --
+-- Indexes for table `student_year`
+--
+ALTER TABLE `student_year`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -125,6 +144,11 @@ ALTER TABLE `grade`
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student_year`
+--
+ALTER TABLE `student_year`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject`
