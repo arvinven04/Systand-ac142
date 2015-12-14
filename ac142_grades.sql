@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2015 at 05:35 AM
+-- Generation Time: Dec 14, 2015 at 05:53 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -34,6 +34,20 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `student_year_id` int(11) NOT NULL,
   `status` char(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `section`
+--
+
+CREATE TABLE IF NOT EXISTS `section` (
+  `id` int(11) NOT NULL,
+  `room` varchar(11) NOT NULL,
+  `section_name` varchar(11) NOT NULL,
+  `status` varchar(11) NOT NULL,
+  `student_year` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -81,6 +95,12 @@ ALTER TABLE `grade`
   ADD PRIMARY KEY (`id`), ADD KEY `subject_id` (`subject_id`), ADD KEY `section_id` (`section_id`), ADD KEY `student_year_id` (`student_year_id`);
 
 --
+-- Indexes for table `section`
+--
+ALTER TABLE `section`
+  ADD PRIMARY KEY (`id`), ADD KEY `student_year` (`student_year`);
+
+--
 -- Indexes for table `subject`
 --
 ALTER TABLE `subject`
@@ -102,6 +122,11 @@ ALTER TABLE `users`
 ALTER TABLE `grade`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `section`
+--
+ALTER TABLE `section`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
@@ -114,4 +139,4 @@ ALTER TABLE `users`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*added subject table*/
+
