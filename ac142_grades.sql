@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2015 at 06:18 AM
+-- Generation Time: Dec 14, 2015 at 05:35 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `doingiteasy_yii2`
+-- Database: `ac142_grades`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,29 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `student_year_id` int(11) NOT NULL,
   `status` char(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `id` int(11) NOT NULL,
+  `subject_name` char(50) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `yearlevel_id` int(11) NOT NULL,
+  `course_id` int(11) NOT NULL,
+  `units` decimal(10,1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`id`, `subject_name`, `section_id`, `yearlevel_id`, `course_id`, `units`) VALUES
+(1, 'SYSTAND', 142, 1, 1, '3.0'),
+(2, 'SYSTAND', 142, 1, 1, '3.0');
 
 -- --------------------------------------------------------
 
@@ -58,6 +81,12 @@ ALTER TABLE `grade`
   ADD PRIMARY KEY (`id`), ADD KEY `subject_id` (`subject_id`), ADD KEY `section_id` (`section_id`), ADD KEY `student_year_id` (`student_year_id`);
 
 --
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`id`), ADD KEY `section_id` (`section_id`), ADD KEY `section_id_2` (`section_id`), ADD KEY `course_id` (`course_id`), ADD KEY `course_id_2` (`course_id`), ADD KEY `yearlevel_id` (`yearlevel_id`), ADD KEY `course_id_3` (`course_id`), ADD KEY `yearlevel_id_2` (`yearlevel_id`), ADD KEY `section_id_3` (`section_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -73,6 +102,11 @@ ALTER TABLE `users`
 ALTER TABLE `grade`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -80,3 +114,4 @@ ALTER TABLE `users`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*added subject table*/
