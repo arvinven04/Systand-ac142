@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2015 at 06:11 AM
+-- Generation Time: Dec 17, 2015 at 05:58 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -82,8 +82,7 @@ CREATE TABLE IF NOT EXISTS `subject` (
 --
 
 INSERT INTO `subject` (`id`, `subject_name`, `section_id`, `yearlevel_id`, `course_id`, `units`) VALUES
-(1, 'SYSTAND', 142, 1, 1, '3.0'),
-(2, 'SYSTAND', 142, 1, 1, '3.0');
+(1, 'SYSTAND', 142, 1, 1, '3.0');
 
 -- --------------------------------------------------------
 
@@ -160,6 +159,29 @@ ALTER TABLE `subject`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `grade`
+--
+ALTER TABLE `grade`
+ADD CONSTRAINT `grade_ibfk_1` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`),
+ADD CONSTRAINT `grade_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `subject` (`id`);
+
+--
+-- Constraints for table `section`
+--
+ALTER TABLE `section`
+ADD CONSTRAINT `section_ibfk_1` FOREIGN KEY (`id`) REFERENCES `subject` (`section_id`);
+
+--
+-- Constraints for table `student_year`
+--
+ALTER TABLE `student_year`
+ADD CONSTRAINT `student_year_ibfk_1` FOREIGN KEY (`id`) REFERENCES `grade` (`student_year_id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
